@@ -1,0 +1,507 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name VccLibrary
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import Accelerate
+import CommonCrypto
+import CoreGraphics
+import CoreLocation
+import CoreMedia
+import Foundation
+import LocalAuthentication
+import Photos
+import Rollbar
+import Security
+import Swift
+import UIKit
+@_exported import VccLibrary
+import Vision
+import WebKit
+import _Concurrency
+import _StringProcessing
+extension VccLibrary.VCCViewController : VccLibrary.CardDetectionViewControllerDelegate, UIKit.UINavigationControllerDelegate, UIKit.UIImagePickerControllerDelegate, VccLibrary.QRScannerCodeDelegate {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func qrScanner(_ controller: UIKit.UIViewController, scanDidComplete result: Swift.String)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func qrScannerDidFail(_ controller: UIKit.UIViewController, error: Swift.String)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func qrScannerDidCancel(_ controller: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func cardDetectionViewController(_ viewController: VccLibrary.CardDetectionViewController, didDetectCard image: CoreGraphics.CGImage, withSettings settings: VccLibrary.CardDetectionSettings)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func cardDetectionViewControllerDidCancel(_ viewController: VccLibrary.CardDetectionViewController)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func imagePickerController(_ picker: UIKit.UIImagePickerController, didFinishPickingMediaWithInfo info: [UIKit.UIImagePickerController.InfoKey : Any])
+}
+extension VccLibrary.VCCViewController : UIKit.UIScrollViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewWillBeginZooming(_ scrollView: UIKit.UIScrollView, with view: UIKit.UIView?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func viewForZoomingInScrollView(scrollView: UIKit.UIScrollView) -> UIKit.UIView?
+}
+@objc @_inheritsConvenienceInitializers @objcMembers @_Concurrency.MainActor(unsafe) public class VCCViewController : UIKit.UIViewController, CoreLocation.CLLocationManagerDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public var vccHost: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var licenseKey: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var icNo: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var partnerKey: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var module: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var paymentInfo: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var partnerProfileId: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var aomUserInfo: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var onboardingData: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var customParam: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var customParam2: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var customParam3: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var fpxData: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var apiToken0: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var testCrash: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var isAutomation: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var dummyIcOption: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var dummySelfieOption: Swift.String
+  @objc @_Concurrency.MainActor(unsafe) public var biometricStatus: Swift.String
+  @_Concurrency.MainActor(unsafe) @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
+  @_Concurrency.MainActor(unsafe) @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: Swift.Error)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class FileDownload {
+  @objc deinit
+}
+extension Foundation.Data {
+  public func sha256() -> Foundation.Data
+}
+@_hasMissingDesignatedInitializers final public class SHA256 {
+  @objc deinit
+}
+open class VCCInAppPayment {
+  public var totalAmount: Swift.String
+  public var merchantName: Swift.String
+  public var merchantId: Swift.String
+  public var orderId: Swift.String
+  public var othersInfo: Foundation.NSMutableDictionary
+  public init()
+  public func toJson() -> Swift.String
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CustomWebView : WebKit.WKWebView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect, configuration: WebKit.WKWebViewConfiguration = WKWebViewConfiguration())
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension VccLibrary.CustomWebView : WebKit.WKNavigationDelegate, WebKit.WKUIDelegate, UIKit.UIScrollViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class BarcodeDetectionViewController : VccLibrary.ObjectDetectionViewController {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: VccLibrary.BarcodeDetectionViewControllerDelegate?
+  @objc @_Concurrency.MainActor(unsafe) final public let settings: VccLibrary.BarcodeDetectionSettings
+  @objc @_Concurrency.MainActor(unsafe) public init(settings: VccLibrary.BarcodeDetectionSettings)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override public func presentationControllerDidDismiss(_ presentationController: UIKit.UIPresentationController)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BarcodeDetectionSettings : VccLibrary.BaseBarcodeDetectionSettings, VccLibrary.TorchSettings {
+  @objc public var torchLevel: Swift.Float
+  @objc override public init(barcodeSymbologies: [Vision.VNBarcodeSymbology]) throws
+  @objc deinit
+}
+@objc public class BaseBarcodeDetectionSettings : ObjectiveC.NSObject {
+  @objc final public let barcodeSymbologies: [Vision.VNBarcodeSymbology]
+  @objc public init(barcodeSymbologies: [Vision.VNBarcodeSymbology]) throws
+  @objc deinit
+}
+@objc public enum BarcodeDetectionSettingsError : Swift.Int, Swift.Error {
+  case unsupportedBarcodeSymbology
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class CardDetectionSettings : VccLibrary.BaseCardDetectionSettings, VccLibrary.TorchSettings {
+  @objc public var torchLevel: Swift.Float
+  @objc override public init(width: CoreFoundation.CGFloat, height: CoreFoundation.CGFloat)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BaseCardDetectionSettings : ObjectiveC.NSObject {
+  @objc public enum Orientation : Swift.Int {
+    case landscape
+    case portrait
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public var size: CoreFoundation.CGSize
+  @objc public var orientation: VccLibrary.BaseCardDetectionSettings.Orientation {
+    @objc get
+    @objc set
+  }
+  @objc public var imagePoolSize: Swift.Int
+  @objc public init(width: CoreFoundation.CGFloat, height: CoreFoundation.CGFloat)
+  @objc convenience override dynamic public init()
+  @objc deinit
+}
+@available(macOS 10.12.1, iOS 9.0, *)
+public enum EllipticCurveKeyPair {
+  public typealias Logger = (Swift.String) -> ()
+  public static var logger: VccLibrary.EllipticCurveKeyPair.Logger?
+  public struct Config {
+    public var publicLabel: Swift.String
+    public var privateLabel: Swift.String
+    public var operationPrompt: Swift.String?
+    public var publicKeyAccessControl: VccLibrary.EllipticCurveKeyPair.AccessControl
+    public var privateKeyAccessControl: VccLibrary.EllipticCurveKeyPair.AccessControl
+    public var publicKeyAccessGroup: Swift.String?
+    public var privateKeyAccessGroup: Swift.String?
+    public var token: VccLibrary.EllipticCurveKeyPair.Token
+    public init(publicLabel: Swift.String, privateLabel: Swift.String, operationPrompt: Swift.String?, publicKeyAccessControl: VccLibrary.EllipticCurveKeyPair.AccessControl, privateKeyAccessControl: VccLibrary.EllipticCurveKeyPair.AccessControl, publicKeyAccessGroup: Swift.String? = nil, privateKeyAccessGroup: Swift.String? = nil, token: VccLibrary.EllipticCurveKeyPair.Token)
+  }
+  final public class Manager {
+    public init(config: VccLibrary.EllipticCurveKeyPair.Config)
+    final public func deleteKeyPair() throws
+    final public func publicKey() throws -> VccLibrary.EllipticCurveKeyPair.PublicKey
+    final public func generateKeypair(context: LocalAuthentication.LAContext? = nil) throws
+    final public func privateKey(context: LocalAuthentication.LAContext? = nil) throws -> VccLibrary.EllipticCurveKeyPair.PrivateKey
+    final public func keys(context: LocalAuthentication.LAContext? = nil) throws -> (public: VccLibrary.EllipticCurveKeyPair.PublicKey, private: VccLibrary.EllipticCurveKeyPair.PrivateKey)
+    final public func clearCache()
+    @available(iOS 10, *)
+    final public func sign(_ digest: Foundation.Data, hash: VccLibrary.EllipticCurveKeyPair.Hash, context: LocalAuthentication.LAContext? = nil) throws -> Foundation.Data
+    @available(macOS, unavailable)
+    @available(iOS, deprecated: 10.0, message: "This method and extra complexity will be removed when 9.0 is obsolete.")
+    final public func signUsingSha256(_ digest: Foundation.Data, context: LocalAuthentication.LAContext? = nil) throws -> Foundation.Data
+    @available(iOS 10, *)
+    final public func verify(signature: Foundation.Data, originalDigest: Foundation.Data, hash: VccLibrary.EllipticCurveKeyPair.Hash) throws
+    @available(macOS, unavailable)
+    @available(iOS, deprecated: 10.0, message: "This method and extra complexity will be removed when 9.0 is obsolete.")
+    final public func verifyUsingSha256(signature: Foundation.Data, originalDigest: Foundation.Data) throws
+    @available(iOS 10.3, *)
+    final public func encrypt(_ digest: Foundation.Data, hash: VccLibrary.EllipticCurveKeyPair.Hash = .sha256) throws -> Foundation.Data
+    @available(iOS 10.3, *)
+    final public func decrypt(_ encrypted: Foundation.Data, hash: VccLibrary.EllipticCurveKeyPair.Hash = .sha256, context: LocalAuthentication.LAContext? = nil) throws -> Foundation.Data
+    @objc deinit
+  }
+  public struct Helper {
+    public let config: VccLibrary.EllipticCurveKeyPair.Config
+    public init(config: VccLibrary.EllipticCurveKeyPair.Config)
+    public func getPublicKey() throws -> VccLibrary.EllipticCurveKeyPair.PublicKey
+    public func getPrivateKey(context: LocalAuthentication.LAContext? = nil) throws -> VccLibrary.EllipticCurveKeyPair.PrivateKey
+    public func getKeys(context: LocalAuthentication.LAContext? = nil) throws -> (public: VccLibrary.EllipticCurveKeyPair.PublicKey, private: VccLibrary.EllipticCurveKeyPair.PrivateKey)
+    public func generateKeyPair(context: LocalAuthentication.LAContext? = nil) throws -> (public: VccLibrary.EllipticCurveKeyPair.PublicKey, private: VccLibrary.EllipticCurveKeyPair.PrivateKey)
+    public func delete() throws
+    @available(iOS 10.0, *)
+    public func sign(_ digest: Foundation.Data, privateKey: VccLibrary.EllipticCurveKeyPair.PrivateKey, hash: VccLibrary.EllipticCurveKeyPair.Hash) throws -> Foundation.Data
+    @available(macOS, unavailable)
+    @available(iOS, deprecated: 10.0, message: "This method and extra complexity will be removed when 9.0 is obsolete.")
+    public func signUsingSha256(_ digest: Foundation.Data, privateKey: VccLibrary.EllipticCurveKeyPair.PrivateKey) throws -> Foundation.Data
+    @available(iOS 10.0, *)
+    public func verify(signature: Foundation.Data, digest: Foundation.Data, publicKey: VccLibrary.EllipticCurveKeyPair.PublicKey, hash: VccLibrary.EllipticCurveKeyPair.Hash) throws
+    @available(macOS, unavailable)
+    @available(iOS, deprecated: 10.0, message: "This method and extra complexity will be removed when 9.0 is obsolete.")
+    public func verifyUsingSha256(signature: Foundation.Data, digest: Foundation.Data, publicKey: VccLibrary.EllipticCurveKeyPair.PublicKey) throws
+    @available(iOS 10.3, *)
+    public func encrypt(_ digest: Foundation.Data, publicKey: VccLibrary.EllipticCurveKeyPair.PublicKey, hash: VccLibrary.EllipticCurveKeyPair.Hash) throws -> Foundation.Data
+    @available(iOS 10.3, *)
+    public func decrypt(_ encrypted: Foundation.Data, privateKey: VccLibrary.EllipticCurveKeyPair.PrivateKey, hash: VccLibrary.EllipticCurveKeyPair.Hash) throws -> Foundation.Data
+    public static func logToConsoleIfExecutingOnMainThread()
+  }
+  public struct Constants {
+    public static let noCompression: Swift.UInt8
+    public static let attrKeyTypeEllipticCurve: Swift.String
+  }
+  @_hasMissingDesignatedInitializers final public class PublicKeyData {
+    final public let raw: Foundation.Data
+    final public var DER: Foundation.Data {
+      get
+      set
+    }
+    final public var PEM: Swift.String {
+      get
+      set
+    }
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers public class Key {
+    final public let underlying: Security.SecKey
+    public func attributes() throws -> [Swift.String : Any]
+    public func label() throws -> Swift.String
+    public func accessGroup() throws -> Swift.String?
+    public func accessControl() throws -> Security.SecAccessControl
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class PublicKey : VccLibrary.EllipticCurveKeyPair.Key {
+    final public func data() throws -> VccLibrary.EllipticCurveKeyPair.PublicKeyData
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers final public class PrivateKey : VccLibrary.EllipticCurveKeyPair.Key {
+    final public var context: LocalAuthentication.LAContext? {
+      get
+    }
+    final public func isStoredOnSecureEnclave() throws -> Swift.Bool
+    @objc deinit
+  }
+  final public class AccessControl {
+    final public let protection: CoreFoundation.CFTypeRef
+    final public let flags: Security.SecAccessControlCreateFlags
+    public init(protection: CoreFoundation.CFTypeRef, flags: Security.SecAccessControlCreateFlags)
+    final public func underlying() throws -> Security.SecAccessControl
+    @objc deinit
+  }
+  public enum Error : Foundation.LocalizedError {
+    case underlying(message: Swift.String, error: Foundation.NSError)
+    case inconcistency(message: Swift.String)
+    case authentication(error: LocalAuthentication.LAError)
+    public var errorDescription: Swift.String? {
+      get
+    }
+  }
+  @available(iOS 10.0, *)
+  public enum Hash : Swift.String {
+    case sha1
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum Token {
+    case secureEnclave
+    case keychain
+    public static var secureEnclaveIfAvailable: VccLibrary.EllipticCurveKeyPair.Token {
+      get
+    }
+    public static func == (a: VccLibrary.EllipticCurveKeyPair.Token, b: VccLibrary.EllipticCurveKeyPair.Token) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Device {
+    public static var hasTouchID: Swift.Bool {
+      get
+    }
+    public static var isSimulator: Swift.Bool {
+      get
+    }
+    public static var hasSecureEnclave: Swift.Bool {
+      get
+    }
+  }
+}
+@_inheritsConvenienceInitializers @objc public class CardAndBarcodeDetectionSettings : ObjectiveC.NSObject, VccLibrary.TorchSettings {
+  @objc public var torchLevel: Swift.Float
+  @objc final public let cardDetectionSettings: VccLibrary.BaseCardDetectionSettings
+  @objc final public let barcodeDetectionSettings: VccLibrary.BaseBarcodeDetectionSettings
+  @objc public init(width: CoreFoundation.CGFloat, height: CoreFoundation.CGFloat, barcodeSymbologies: [Vision.VNBarcodeSymbology]) throws
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct RSASignature {
+}
+extension WebKit.WKWebView {
+  @_Concurrency.MainActor(unsafe) public var javaScriptController: VccLibrary.WKJavaScriptController? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public func prepareForJavaScriptController()
+}
+@objc @_hasMissingDesignatedInitializers open class JSValueType : ObjectiveC.NSObject {
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class JSBool : VccLibrary.JSValueType {
+  open var value: Swift.Bool {
+    get
+  }
+  convenience public init(_ value: Swift.Bool)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class JSInt : VccLibrary.JSValueType {
+  open var value: Swift.Int {
+    get
+  }
+  convenience public init(_ value: Swift.Int)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class JSFloat : VccLibrary.JSValueType {
+  open var value: Swift.Float {
+    get
+  }
+  convenience public init(_ value: Swift.Float)
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let WKJavaScriptControllerIgnoredMethodInvocation: Foundation.Notification.Name
+  public static let WKJavaScriptControllerWillMethodInvocation: Foundation.Notification.Name
+}
+@objc open class WKJavaScriptController : ObjectiveC.NSObject {
+  open var ignoreMethodCallWhenReceivedNull: Swift.Bool
+  @available(*, deprecated, renamed: "ignoreMethodCallWhenReceivedNull")
+  open var shouldSafeMethodCall: Swift.Bool {
+    get
+    set
+  }
+  open var convertsToDictionaryWhenReceivedJsonString: Swift.Bool
+  @available(*, deprecated, renamed: "convertsToDictionaryWhenReceivedJsonString")
+  open var shouldConvertJSONString: Swift.Bool {
+    get
+    set
+  }
+  open var callbackTimeout: Swift.Double {
+    get
+    set
+  }
+  open var logEnabled: Swift.Bool
+  public init(name: Swift.String, target: Swift.AnyObject, bridgeProtocol: ObjectiveC.`Protocol`)
+  open func addUserScript(_ userScript: WebKit.WKUserScript)
+  open func removeAllUserScripts()
+  @objc deinit
+}
+extension VccLibrary.WKJavaScriptController : WebKit.WKScriptMessageHandler {
+  @objc dynamic public func userContentController(_ userContentController: WebKit.WKUserContentController, didReceive message: WebKit.WKScriptMessage)
+}
+public enum EnvironmentEnum {
+}
+public class VCCUtilities {
+  public var partnerKey: Swift.String
+  public var vccHost: Swift.String
+  public var partnerAppId: Swift.String
+  public init()
+  public func isVCCEnabled() -> Swift.Bool
+  public func isCustomerRegistered() -> Swift.Bool
+  @objc deinit
+}
+public protocol QRScannerCodeDelegate : AnyObject {
+  func qrScanner(_ controller: UIKit.UIViewController, scanDidComplete result: Swift.String)
+  func qrScannerDidFail(_ controller: UIKit.UIViewController, error: Swift.String)
+  func qrScannerDidCancel(_ controller: UIKit.UIViewController)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class QRCodeScannerController : UIKit.UIViewController, AVFoundation.AVCaptureMetadataOutputObjectsDelegate, UIKit.UIImagePickerControllerDelegate, UIKit.UINavigationBarDelegate {
+  @_Concurrency.MainActor(unsafe) weak public var delegate: VccLibrary.QRScannerCodeDelegate?
+  @_Concurrency.MainActor(unsafe) public var cameraImage: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var cancelImage: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var flashOnImage: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var flashOffImage: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) convenience public init(cameraImage: UIKit.UIImage?, cancelImage: UIKit.UIImage?, flashOnImage: UIKit.UIImage?, flashOffImage: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) open func startScanningQRCode()
+  @_Concurrency.MainActor(unsafe) @objc public func metadataOutput(_ output: AVFoundation.AVCaptureMetadataOutput, didOutput metadataObjects: [AVFoundation.AVMetadataObject], from connection: AVFoundation.AVCaptureConnection)
+}
+extension VccLibrary.QRCodeScannerController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @objc get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class CardDetectionViewController : VccLibrary.BaseCardDetectionViewController {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: VccLibrary.CardDetectionViewControllerDelegate?
+  @objc @_Concurrency.MainActor(unsafe) public var settings: VccLibrary.CardDetectionSettings
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class BaseCardDetectionViewController : VccLibrary.ObjectDetectionViewController {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @_Concurrency.MainActor(unsafe) @objc override public func presentationControllerDidDismiss(_ presentationController: UIKit.UIPresentationController)
+  @objc deinit
+}
+@objc public protocol TorchSettings {
+  @objc var torchLevel: Swift.Float { get }
+}
+@objc public protocol CardDetectionViewControllerDelegate {
+  @objc func cardDetectionViewController(_ viewController: VccLibrary.CardDetectionViewController, didDetectCard image: CoreGraphics.CGImage, withSettings settings: VccLibrary.CardDetectionSettings)
+  @objc optional func cardDetectionViewControllerDidCancel(_ viewController: VccLibrary.CardDetectionViewController)
+  @objc optional func qualityOfImage(_ image: CoreGraphics.CGImage) -> Foundation.NSNumber?
+}
+@objc public protocol CardAndBarcodeDetectionViewControllerDelegate {
+  @objc func cardAndBarcodeDetectionViewController(_ viewController: VccLibrary.CardAndBarcodeDetectionViewController, didDetectCard image: CoreGraphics.CGImage, andBarcodes barcodes: [Vision.VNBarcodeObservation], withSettings settings: VccLibrary.CardAndBarcodeDetectionSettings)
+  @objc optional func cardAndBarcodeDetectionViewControllerDidCancel(_ viewController: VccLibrary.CardAndBarcodeDetectionViewController)
+  @objc optional func qualityOfImage(_ image: CoreGraphics.CGImage) -> Foundation.NSNumber?
+}
+extension CoreVideo.CVBuffer {
+  @available(iOS 13.0, *)
+  public func sharpness() -> Swift.Float?
+  public func cgImage(withOrientation orientation: ImageIO.CGImagePropertyOrientation) -> CoreGraphics.CGImage?
+}
+extension CoreMedia.CMSampleBuffer {
+  public func cgImage(withOrientation orientation: ImageIO.CGImagePropertyOrientation) -> CoreGraphics.CGImage?
+}
+public struct EasyRequest<Model> where Model : Swift.Decodable, Model : Swift.Encodable {
+  public typealias SuccessCompletionHandler = (_ response: Model) -> Swift.Void
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class ObjectDetectionViewController : UIKit.UIViewController, UIKit.UIAdaptivePresentationControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var prefersStatusBarHidden: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) @objc public func presentationControllerDidDismiss(_ presentationController: UIKit.UIPresentationController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class QRSquareView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class CardAndBarcodeDetectionViewController : VccLibrary.BaseCardDetectionViewController {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: VccLibrary.CardAndBarcodeDetectionViewControllerDelegate?
+  @objc @_Concurrency.MainActor(unsafe) final public let settings: VccLibrary.CardAndBarcodeDetectionSettings
+  @objc @_Concurrency.MainActor(unsafe) public init(settings: VccLibrary.CardAndBarcodeDetectionSettings)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @objc deinit
+}
+@objc public protocol BarcodeDetectionViewControllerDelegate {
+  @objc func barcodeDetectionViewController(_ viewController: VccLibrary.BarcodeDetectionViewController, didDetectBarcodes barcodes: [Vision.VNBarcodeObservation])
+  @objc optional func barcodeDetectionViewControllerDidCancel(_ viewController: VccLibrary.BarcodeDetectionViewController)
+}
+@objc @available(iOS 11.0, *)
+public class PerspectiveCorrectionParamsOperation : Foundation.Operation {
+  public init(pixelBuffer: CoreVideo.CVImageBuffer, orientation: ImageIO.CGImagePropertyOrientation, rect: Vision.VNRectangleObservation)
+  @objc override dynamic public func main()
+  @objc deinit
+}
+extension VccLibrary.BarcodeDetectionSettingsError : Swift.Equatable {}
+extension VccLibrary.BarcodeDetectionSettingsError : Swift.Hashable {}
+extension VccLibrary.BarcodeDetectionSettingsError : Swift.RawRepresentable {}
+extension VccLibrary.BaseCardDetectionSettings.Orientation : Swift.Equatable {}
+extension VccLibrary.BaseCardDetectionSettings.Orientation : Swift.Hashable {}
+extension VccLibrary.BaseCardDetectionSettings.Orientation : Swift.RawRepresentable {}
+@available(macOS 10.12.1, iOS 10.0, *)
+extension VccLibrary.EllipticCurveKeyPair.Hash : Swift.Equatable {}
+@available(macOS 10.12.1, iOS 10.0, *)
+extension VccLibrary.EllipticCurveKeyPair.Hash : Swift.Hashable {}
+@available(macOS 10.12.1, iOS 10.0, *)
+extension VccLibrary.EllipticCurveKeyPair.Hash : Swift.RawRepresentable {}
+@available(macOS 10.12.1, iOS 9.0, *)
+extension VccLibrary.EllipticCurveKeyPair.Token : Swift.Equatable {}
+@available(macOS 10.12.1, iOS 9.0, *)
+extension VccLibrary.EllipticCurveKeyPair.Token : Swift.Hashable {}

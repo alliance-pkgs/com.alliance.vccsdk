@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.alliance.vccsdk" version="1.2.2">
+   <name>VCCSDK</name>
+   <js-module name="VCCSDK" src="www/VCCSDK.js">
+      <clobbers target="cordova.plugins.VCCSDK" />
+   </js-module>
+   <platform name="android">
+      <config-file parent="/*" target="res/xml/config.xml">
+         <feature name="VCCSDK">
+            <param name="android-package" value="com.alliance.vccsdk.VCCSDK" />
+         </feature>
+      </config-file>
+      <config-file parent="/*" target="AndroidManifest.xml" />
+      <source-file src="src/android/VCCSDK.java" target-dir="src/com/alliance/vccsdk/VCCSDK" />
+      
+      <framework custom="true" src="src/android/plugin-settings.gradle" type="gradleReference" />
+
+      <lib-file src="src/android/libs/sdklib-release.aar"/>
+      <lib-file src="src/android/libs/idcardcamera-release.aar"/>
+      
+   </platform>
+   <platform name="ios">
+      <config-file parent="/*" target="config.xml">
+         <feature name="VCCSDK">
+            <param name="ios-package" value="VCCSDK" />
+         </feature>
+      </config-file>
+      <source-file src="src/ios/VCCSDK.m" />
+      
+      <framework src="src/ios/libs/VccLibrary.xcframework" embed="true" custom="true" />
+      <framework src="src/ios/libs/Rollbar.xcframework" embed="true" custom="true" />
+
+   </platform>
+</plugin>

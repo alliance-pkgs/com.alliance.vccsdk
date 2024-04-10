@@ -1,0 +1,11 @@
+framework module VccLibrary {
+  umbrella header "VccLibrary.h"
+
+  export *
+  module * { export * }
+}
+
+module VccLibrary.Swift {
+  header "VccLibrary-Swift.h"
+  requires objc
+}

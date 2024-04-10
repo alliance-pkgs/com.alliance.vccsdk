@@ -1,0 +1,19 @@
+{
+  "name": "com.alliance.vccsdk",
+  "version": "1.0.0",
+  "description": "",
+  "cordova": {
+    "id": "com.alliance.vccsdk",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Lim Kok Chyuan",
+  "license": "ISC"
+}

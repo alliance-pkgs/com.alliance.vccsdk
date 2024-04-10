@@ -1,0 +1,26 @@
+repositories{
+    jcenter()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation(name: 'sdklib-release', ext: 'aar')
+    implementation(name: 'idcardcamera-release', ext: 'aar')
+
+    implementation 'com.rollbar:rollbar-java:1.7.8'
+    implementation 'com.rollbar:rollbar-android:1.7.8@aar'
+    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
+    implementation 'com.scottyab:rootbeer-lib:0.0.8'
+    implementation 'id.zelory:compressor:2.1.1'
+    //implementation('com.journeyapps:zxing-android-embedded:3.3.0') { transitive = false }
+    //implementation 'com.google.zxing:core:3.3.0'
+    implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
+    implementation 'net.lingala.zip4j:zip4j:2.6.3'
+    implementation 'androidx.biometric:biometric:1.2.0-alpha03'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'org.bouncycastle:bcpkix-jdk15to18:1.66'
+}

@@ -1,0 +1,13 @@
+//
+//  Config.xcconfig
+//  VccLibrary
+//
+//  Created by Jimmy Hee on 20/05/2021.
+//  Copyright © 2021 Cyber Village. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+ROLLBAR_ENVIRONMENT=development
+ROLLBAR_POST_CLIENT_ITEM_TOKEN=febcf13567df423e9bbf2b8919c78020
